@@ -1,0 +1,9 @@
+{
+    "manifest_version": 2,
+
+    "name": "Unwanted word highlighter",
+
+    "description": "Highlights words you type that you would rather not type, e.g. 'retard', 'guys', 'lame'",
+
+    "version": "0.0"
+}
