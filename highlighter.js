@@ -1,6 +1,22 @@
 (function()
  {
      var textboxes = document.body.querySelectorAll('[contenteditable="true"], [type="text"], textarea')
+
+     var bad_words = []
+
+     chrome.storage.sync.get('badwords', function(items){ bad_words = items.badwords })
+
+     chrome.storage.onChanged.addListener(function(changes, areaName)
+					 {
+					     if(areaName === 'sync')
+					     {
+						 var badwords = changes['badwords'].newValue
+						 if(badwords !== undefined)
+						 {
+						     bad_words = badwords
+						 }
+					     }
+					 });
      
      textboxes.forEach(tb => tb.addEventListener('keyup', function(e)
 						 {
@@ -20,11 +36,9 @@
 						     {
 							 text = this.innerText
 						     }
-
-						     var bad_words = ['guys', 'AWFUL', 'happy christmas']
-
-						     var message = ''
 						     
+						     var message = ''
+
 						     bad_words.forEach(function(word)
 								       {
 									   var r = new RegExp('(^|\\W)('+word+')(\\W|$)', 'gim')
