@@ -1,4 +1,4 @@
-#Bias Highlighter
+# Bias Highlighter
 
 It's a chrome extension that follows what you type and highlights, with a tooltip, when you use a word you want to stop using.
 
